@@ -9,7 +9,15 @@ scope = [
 ]
 
 # Authorize using the service account
-creds = ServiceAccountCredentials.from_json_keyfile_name("credentials.json", scope)
+import json
+import os
+
+json_creds = os.environ.get("GOOGLE_CREDS")
+if json_creds:
+    parsed_creds = json.loads(json_creds)
+    creds = ServiceAccountCredentials.from_json_keyfile_dict(parsed_creds, scope)
+else:
+    raise Exception("GOOGLE_CREDS not found in environment")
 client = gspread.authorize(creds)
 
 # Open your sheet using the Google Sheet ID
