@@ -1,0 +1,45 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg
+*.egg-info/
+dist/
+build/
+env/
+venv/
+*.env
+*.log
+
+# Django
+*.sqlite3
+db.sqlite3
+*.pot
+*.pyc
+*.pyo
+*.pyd
+*.swp
+.DS_Store
+media/
+staticfiles/
+
+# VSCode / IDEs
+.vscode/
+.idea/
+*.sublime-workspace
+*.sublime-project
+
+# OS junk files
+Thumbs.db
+Desktop.ini
+
+# Environment credentials
+credentials.json
+
+# Pip + Render
+*.lock
+*.tar.gz
+*.whl
+render.yaml
+
+# MacOS
+.DS_Store

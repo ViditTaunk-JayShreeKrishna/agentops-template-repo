@@ -1,0 +1,67 @@
+[
+  {
+    "from": "ask_city",
+    "if": "user mentions 'Delhi' or 'Bangalore'",
+    "to": "check_intent"
+  },
+  {
+    "from": "check_intent",
+    "if": "user says 'book'",
+    "to": "new_booking"
+  },
+  {
+    "from": "check_intent",
+    "if": "user says 'faq' or 'question'",
+    "to": "faq_response"
+  },
+  {
+    "from": "check_intent",
+    "if": "user says 'cancel'",
+    "to": "cancel_booking"
+  },
+  {
+    "from": "check_intent",
+    "if": "user says 'modify' or 'change'",
+    "to": "modify_booking"
+  },
+  {
+    "from": "confirm_booking",
+    "if": "user says 'yes' or 'confirm'",
+    "to": "end"
+  },
+  {
+    "from": "confirm_booking",
+    "if": "user says 'no' or 'change'",
+    "to": "new_booking"
+  },
+  {
+    "from": "confirm_booking",
+    "if": "unrecognized",
+    "to": "fallback"
+  },
+  {
+    "from": "fallback",
+    "if": "user says 'book'",
+    "to": "new_booking"
+  },
+  {
+    "from": "fallback",
+    "if": "user says 'faq'",
+    "to": "faq_response"
+  },
+  {
+    "from": "fallback",
+    "if": "user says 'cancel'",
+    "to": "cancel_booking"
+  },
+  {
+    "from": "fallback",
+    "if": "user says 'modify'",
+    "to": "modify_booking"
+  },
+  {
+    "from": "fallback",
+    "if": "otherwise",
+    "to": "fallback"
+  }
+]

@@ -1,0 +1,42 @@
+[
+  {
+    "name": "ask_city",
+    "type": "jinja",
+    "prompt": "Please tell me which city you're interested in — Delhi or Bangalore?"
+  },
+  {
+    "name": "check_intent",
+    "type": "jinja",
+    "prompt": "Would you like to make a booking, cancel one, modify an existing booking, or ask a question?"
+  },
+  {
+    "name": "new_booking",
+    "type": "jinja",
+    "prompt": "You're booking a table at Barbeque Nation in {{ city }}. Please tell me your name, number of guests, booking date (YYYY-MM-DD), and time (HH:MM)."
+  },
+  {
+    "name": "confirm_booking",
+    "type": "jinja",
+    "prompt": "Here is your booking summary:\nName: {{ name }}\nPhone: {{ phone }}\nGuests: {{ guests }}\nDate: {{ date }}\nTime: {{ time }}\nCity: {{ city }}\nPlease confirm if everything is correct."
+  },
+  {
+    "name": "faq_response",
+    "type": "jinja",
+    "prompt": "Let me answer your question for {{ city }}. I'm calling the API: http://127.0.0.1:8000/api/get-faqs/?city={{ city }} and will return the relevant FAQ."
+  },
+  {
+    "name": "cancel_booking",
+    "type": "jinja",
+    "prompt": "Please provide your phone number and booking date to cancel your reservation in {{ city }}."
+  },
+  {
+    "name": "modify_booking",
+    "type": "jinja",
+    "prompt": "Please provide your phone number and booking date, and tell me what you'd like to change for your booking in {{ city }}."
+  },
+  {
+    "name": "fallback",
+    "type": "jinja",
+    "prompt": "Sorry, I didn't understand that. Can you rephrase or say if you'd like to book, cancel, modify, or ask a question?"
+  }
+]
