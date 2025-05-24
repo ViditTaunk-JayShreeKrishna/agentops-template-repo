@@ -65,3 +65,19 @@ def log_post_call(data):
         print("Post-call logging failed:", e)
         return False
 
+import os, json
+from oauth2client.service_account import ServiceAccountCredentials
+
+try:
+    json_creds = os.environ.get("GOOGLE_CREDS")
+    if not json_creds:
+        raise Exception("GOOGLE_CREDS env var is missing")
+
+    parsed_creds = json.loads(json_creds)
+    scope = ['https://spreadsheets.google.com/feeds', 'https://www.googleapis.com/auth/drive']
+    creds = ServiceAccountCredentials.from_json_keyfile_dict(parsed_creds, scope)
+
+    print("✅ Render loaded credentials successfully!")
+
+except Exception as e:
+    print(f"❌ Render failed: {e}")
