@@ -33,7 +33,7 @@ Thumbs.db
 Desktop.ini
 
 # Environment credentials
-#credentials.json
+credentials.json
 
 # Pip + Render
 *.lock
