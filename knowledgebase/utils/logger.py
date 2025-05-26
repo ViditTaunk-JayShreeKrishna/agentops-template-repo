@@ -12,7 +12,7 @@ scope = [
 import json
 import os
 
-json_creds = os.environ.get("GOOGLE_CREDS")
+json_creds = os.environ.get("GOOGLE_CREDS_B64")
 if json_creds:
     parsed_creds = json.loads(json_creds)
     creds = ServiceAccountCredentials.from_json_keyfile_dict(parsed_creds, scope)
