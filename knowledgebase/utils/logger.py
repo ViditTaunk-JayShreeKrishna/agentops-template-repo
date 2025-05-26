@@ -68,16 +68,28 @@ def log_post_call(data):
 import os, json
 from oauth2client.service_account import ServiceAccountCredentials
 
+import os, json, base64
+from oauth2client.service_account import ServiceAccountCredentials
+
+scope = ['https://spreadsheets.google.com/feeds', 'https://www.googleapis.com/auth/drive']
+
 try:
-    json_creds = os.environ.get("GOOGLE_CREDS")
-    if not json_creds:
-        raise Exception("GOOGLE_CREDS env var is missing")
+    # Decode Base64 env var to credentials.json
+    encoded = os.environ.get("GOOGLE_CREDS_B64")
+    if not encoded:
+        raise Exception("GOOGLE_CREDS_B64 is not set")
 
-    parsed_creds = json.loads(json_creds)
-    scope = ['https://spreadsheets.google.com/feeds', 'https://www.googleapis.com/auth/drive']
+    decoded = base64.b64decode(encoded)
+
+    creds_path = os.path.join(os.path.dirname(__file__), "credentials.json")
+    with open(creds_path, "wb") as f:
+        f.write(decoded)
+
+    with open(creds_path) as f:
+        parsed_creds = json.load(f)
+
     creds = ServiceAccountCredentials.from_json_keyfile_dict(parsed_creds, scope)
-
-    print("✅ Render loaded credentials successfully!")
+    print("✅ Loaded credentials from base64 env and wrote to file")
 
 except Exception as e:
-    print(f"❌ Render failed: {e}")
+    print(f"❌ Error loading Google credentials: {e}")
